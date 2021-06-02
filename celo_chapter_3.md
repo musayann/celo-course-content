@@ -1,14 +1,3 @@
-# Celo Development 101 - 3. Building the Frontend of the DApp
-
-In this chapter, you will learn how to build the user interface of your DApp, connect it to your smart contract and host it on GitHub.
-
-## Learning Objective
-
-In this chapter, you will:
--   Learn how to write the HTML and JS part of your DApp.
--   Connect your DApp to your smart contract on the Celo blockchain with the library ContractKit.
--   Learn how to enable purchases via the Celo stablecoin cUSD.
-
 Here is a preview of the DApp that you are going to build:
 [Link to Marketplace DApp](https://moritzfelipe.github.io/celo-marketplace-dapp/)
 
