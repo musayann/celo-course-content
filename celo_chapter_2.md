@@ -27,7 +27,7 @@ Go to remix.ethereum.org and create a new file, call it something like marketpla
 
 You will now set up the first basic parameters for your contract.
 
-```
+```solidity
 // SPDX-License-Identifier: MIT  
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -37,7 +37,7 @@ In the first line, you specify the license the contract uses. Here is a comprehe
 
 With the keyword `pragma`, you specify the solidity version that you want the compiler to use. In this case, it should be higher than or seven and lower than nine. It is important to specify the version of the compiler because solidity changes constantly. If you want to execute older code without breaking it, you can do that by using an older compiler version.
 
-```
+```solidity
 contract Marketplace {  
 
     string public product = "Burger";  
@@ -65,7 +65,7 @@ Code for this part of the tutorial.
 
 Currently, the value of your product variable is hardcoded into the contract. In this part, you will enable the user to enter and retrieve the value of the product variable.
   
-```
+```solidity
 contract Marketplace {
 
     string internal product;
@@ -90,7 +90,7 @@ In the next line, you assign to your state variable product the value of the par
 
 Now you create a second function to let the user read out the value of product.
 
-```
+```solidity
 contract Marketplace {
 
     string internal product;
@@ -129,7 +129,7 @@ In this part, you will learn how to store multiple products.
 
 First, you get rid of the state variable product. You will use mapping instead.
 
-```
+```solidity
 contract Marketplace {
 
     mapping (uint => string) internal products;
@@ -141,7 +141,7 @@ To create a mapping you use the keyword `mapping` and assign a key type to a val
 
 Now you need to adapt your `writeProduct` function.
 
-```
+```solidity
 function writeProduct(uint _index, string memory _product) public {
 	products[_index] = _product;
 }
@@ -152,7 +152,7 @@ In the next line, you create a new key-value pair for the products mapping, by m
 
 Now you need to change the `readProduct` function too.
 
-```
+```solidity
 function readProduct(uint _index) public view returns (string memory) {
 	return products[_index];
 }
@@ -174,7 +174,7 @@ At the moment you can only store one string for your product. When you look at t
 
 In Solidity, you use structs to define new types that can group variables. A struct behaves similar to an object in javascript ([Learn more about structs](https://docs.soliditylang.org/en/latest/types.html#structs)).
 
-```
+```solidity
 contract Marketplace {
 
     struct Product {
@@ -196,7 +196,7 @@ Next, you create `string` variables for the `name`, `image`, `description` and `
 
 Now you also need to adapt the mapping.
 
-```
+```solidity
 	mapping (uint => Product) internal products;
 ```
 
@@ -205,7 +205,7 @@ Now you can access a group of variables through an index.
 
 You also need to adapt the `writeProduct` function.
 
-```
+```solidity
 	function writeProduct(
 		uint _index, 
 		string memory _name,
@@ -239,7 +239,7 @@ You also input the value for the other variables from your parameters.
 
 The changes that you need to make to your `readProduct` function are straight forward.
 
-```
+```solidity
 	function readProduct(uint _index) public view returns (
 		address payable,
 		string memory, 
@@ -275,7 +275,7 @@ Code for this part of the tutorial.
 ## 2.6 Optimising the Contract (4 min)
 In this part of the tutorial, you will optimise your contract. You will create a state variable that keeps track of how many products are stored in your contract. You will need this later when you want to iterate over all products in the frontend. This variable will also help you to create the indexes for your products, so the users don’t have to take care of that themselves.
 
-```
+```solidity
 contract Marketplace {
 
     uint internal productsLength = 0;
@@ -284,7 +284,7 @@ contract Marketplace {
 You create a new variable of the type uint with the visibility internal that you call productsLength and set it to zero when the contract is created.
 
 
-```
+```solidity
 	function writeProduct(
 		string memory _name,
 		string memory _image,
@@ -311,11 +311,11 @@ The key for the mapping of the Product `struct` that you save will be `productsL
 When a new product has been stored you count `productsLength` up by one.
 
 When the first product is created, `productsLength` is 0, so the index where this product is stored is 0. After it is saved, productsLength is set to 1. That's the amount of how many products you have stored and the index of the next product you will store.
-
+```solidity
     function getProductsLength() public view returns (uint) {
         return (productsLength);
     }
-
+```
 
 Finally, you create a public function to return the number of products stored, you will iterate over it in the frontend.
 
@@ -336,7 +336,7 @@ First, insert the interface of an ERC-20 token so your contract can interact wit
 You can find the functions and events of the interface in the Celo documentation ([Celo Docs](https://docs.celo.org/developer-guide/celo-for-eth-devs)).
 
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 
 pragma solidity >=0.7.0 <0.9.0;
@@ -358,7 +358,7 @@ contract Marketplace {
 
 You create an interface using the interface keyword, followed by a name, you can choose `IERC20Token` or whatever you like, and the functionality of the interface, in this case, the functionality of the ERC-20 token.
 
-```
+```solidity
 contract Marketplace {
 
     uint internal productsLength = 0;
@@ -369,7 +369,7 @@ Next, you need to know the address of the cUSD ERC-20 token on the Celo alfajore
 
 Now you need to create the function to buy products from your contract.
 
-```
+```solidity
 	function buyProduct(uint _index) public payable  {
 		require(
 		  IERC20Token(cUsdTokenAddress).transferFrom(
