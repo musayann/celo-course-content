@@ -1,3 +1,12 @@
+---
+title: 2. Smart Contract Development
+description: In this chapter, you will learn how to write a smart contract in the popular smart contract language Solidity and deploy it to the Celo blockchain.
+objectives:
+  - Learn how to write smart contracts in Solidity with the Remix IDE.
+  - Write a smart contract for a marketplace.
+  - Deploy your smart contract to the Celo blockchain.
+---
+
 Here is the contract that you are going to build:
 [Link to marketplace.sol](https://github.com/moritzfelipe/celo-marketplace-dapp/blob/master/contract/marketplace.sol)
 
