@@ -883,7 +883,6 @@ We will provide you with the address of the cUSD contract on the alfajores testn
 const ERC20_DECIMALS = 18
 const MPContractAddress = "0x178134c92EC973F34dD0dd762284b852B211CFC8"
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
-
 ```
 
 You create a global variable for the cUSD contract address.
@@ -975,7 +974,7 @@ It might take some minutes but then you should be able to visit your DApp under 
 
 That’s it! Congratulations, you are done with the tutorial and have built your first DApp 🎉.
 Now apply your new knowledge and take part in the challenge of this course.
-
+```html
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -987,7 +986,7 @@ You declare the document type, add an HTML tag, create a head element and add me
 
 Next, you are going to import some external stylesheets.
 
-```
+```html
     <!-- CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -1005,7 +1004,7 @@ In this tutorial, you are going to use bootstrap which is a popular front-end li
 
 You also import the bootstrap icons.
 
-```
+```html
     <link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link
 	  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
@@ -1015,7 +1014,7 @@ You also import the bootstrap icons.
 
 You add a font that you want to use for this DApp, in this case, it’s DM Sans.
 
-```
+```html
 	<style>
 	  :root {
 		--bs-font-sans-serif: "DM Sans", sans-serif;
@@ -1044,7 +1043,7 @@ You import the font as your main font and adjust the style of Bootstrap cards co
 
 In the end, you add a title.
 
-```
+```html
   <body>
     <div class="container mt-2" style="max-width: 72em">
 
@@ -1063,7 +1062,7 @@ Inside the body element, you create a navigation bar, where you display the name
 
 You will get the value for the user’s balance later from your Javascript and display it in the span element with the id `balance`.
 
-```
+```html
   <div class="alert alert-warning sticky-top mt-2" role="alert">
     <span id="notification">⌛ Loading...</span>
   </div>
@@ -1071,7 +1070,7 @@ You will get the value for the user’s balance later from your Javascript and d
 
 You create a `div` for the notifications that you want to display to the user. This div has the class alert, you are going to select it later in your JS code. The `span` element has the id `notification`, that you are going to use to insert the text that you want to display.
 
-```
+```html
   <div class="mb-4" style="margin-top: 4em">
     <a
       class="btn btn-dark rounded-pill"
@@ -1085,7 +1084,7 @@ You create a `div` for the notifications that you want to display to the user. T
 
 You create a div to display the `Add product` button at the right place. The `Add product` button will toggle a modal that will allow the user to add a new product to the DApp.
 
-```
+```html
   <main id="marketplace" class="row"></main>
 </div>
 ```
@@ -1094,7 +1093,7 @@ Finally, you will add a main tag with the id marketplace where you will display 
 
 You will also need to create the modal that opens up when the user clicks on the `Add product` button. This code is pretty long, but not much is happening here.
 
-```
+```html
 <!--Modal-->
 <div
   class="modal fade"
@@ -1118,7 +1117,8 @@ You will also need to create the modal that opens up when the user clicks on the
 ```
 
 You create a modal with a title and a close button.
-```
+
+```html
       <div class="modal-body">
         <form>
           <div class="form-row">
@@ -1169,7 +1169,7 @@ You create a modal with a title and a close button.
 
 In this part of the modal, you are creating a form, so that the user can input the attributes of the product they want to add to your DApp. They need to enter the name, image URL, product description, location and price of their product.
 
-```
+```html
     <div class="modal-footer">
         <button
           type="button"
@@ -1196,7 +1196,7 @@ In this part of the modal, you are creating a form, so that the user can input t
 
 In the footer of your modal, you add another Close button and an `Add product` button with the id `newProductBtn`.
 
-```
+```html
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
@@ -1221,8 +1221,8 @@ HTML Code
 In this part of the tutorial, you will add the basic functionality of your DApp. You will create a functioning version in vanilla Javascript with sample products, that is not connected to the Celo blockchain yet.
 
 Open the main.js file inside the src folder of your project.
-```
 
+```js
 const products = [
   {
     name: "Giant BBQ",
@@ -1273,7 +1273,7 @@ const products = [
 
 Since your DApp is not connected to your contract where you store the products, you create an array called products, with sample product data.
 
-```
+```js
 const getBalance = function () {
   document.querySelector("#balance").textContent = 21
 }
@@ -1281,7 +1281,7 @@ const getBalance = function () {
 
 In the `getBalance` function, you update the balance of the user. In this static version you hard code the number 21 in it, so that in the HTML span element with the id balance, 21 will be displayed.
 
-```
+```js
 function renderProducts() {
   document.getElementById("marketplace").innerHTML = ""
   products.forEach((_product) => {
@@ -1302,7 +1302,7 @@ For each product in products, you are going to create a new div with the HTML of
 Now you create the HTML of the product.
 
 
-```
+```js
 function productTemplate(_product) {
   return `
     <div class="card mb-4">
@@ -1314,7 +1314,7 @@ function productTemplate(_product) {
 
 In your `productTemplate` function, you create a card with an image of the product and a little box with the number of times it has been sold.
 
-```
+```js
 
       <div class="card-body text-left p-4 position-relative">
         <div class="translate-middle-y position-absolute top-0">
@@ -1347,7 +1347,7 @@ You create a small image called an identicon which has its own `identiconTemplat
 You also display the product name, description, location and at the end the price displayed on the buy button. The product index will be the id of the button element, so you know what product the user selected when they click on it.
 
 
-```
+```js
 function identiconTemplate(_address) {
   const icon = blockies
     .create({
@@ -1373,7 +1373,7 @@ Now you are going to create the identicon. The `identiconTemplate` function take
 You return a round image of the icon and a link that takes the user to the transactions of the address.
 
 
-```
+```js
 function notification(_text) {
   document.querySelector(".alert").style.display = "block"
   document.querySelector("#notification").textContent = _text
@@ -1388,7 +1388,7 @@ You create a `notification` function that displays the alert element with the te
 
 Now you create some event handlers.
 
-```
+```js
 window.addEventListener("load", () => {
   notification("⌛ Loading...")
   getBalance()
@@ -1399,7 +1399,7 @@ window.addEventListener("load", () => {
 
 When your DApp is loaded you want to call your notification function with a loading message, you display the user's balance, render all products so the user can see them and disable the notification div again.
 
-```
+```js
 document
   .querySelector("#newProductBtn")
   .addEventListener("click", () => {
@@ -1429,7 +1429,7 @@ You set `sold` to 0 because the product is brand new and the index to the length
 
 You add the new product to your products array, send a notification and render the products.
 
-```
+```js
 document.querySelector("#marketplace").addEventListener("click", (e) => {
   if(e.target.className.includes("buyBtn")) {
     const index = e.target.id
@@ -1456,7 +1456,7 @@ In this part, you will establish a connection to the Celo Blockchain and read ou
 Open the main.js that you just worked on in the last step and expand it.
 But first, get rid of the products array, you don’t need sample data anymore.
 
-```
+```js
 import Web3 from 'web3'
 import { newKitFromWeb3 } from '@celo/contractkit'
 import BigNumber from "bignumber.js"
@@ -1475,7 +1475,7 @@ You create the variable `ERC20_DECIMALS`  and set it to 18. By default, the ERC2
 Declare also a global variable for contractKit, since you're going to use it in multiple functions.
 
 Now you create a function to connect to the Celo extension wallet.
-```
+```js
 const connectCeloWallet = async function () {
   if (window.celo) {
       notification("⚠️ Please approve this DApp to use it.")
@@ -1508,7 +1508,7 @@ With this web3 object, you can create a new kit instance that you save to the gl
 
 Next, you will access the account of the user.
 
-```
+```js
 const connectCeloWallet = async function () {
   if (window.celo) {
     notification("⚠️ Please approve this DApp to use it.")
@@ -1535,7 +1535,7 @@ Your `connectCeloWallet` function stays basically the same, but beneath your new
 
 Now you need to adjust your getBalance function to access and display the cUSD balance of the user.
 
-```
+```js
 const getBalance = async function () {
   const totalBalance = await kit.getTotalBalance(kit.defaultAccount)
   const cUSDBalance = totalBalance.cUSD.shiftedBy(-ERC20_DECIMALS).toFixed(2)
@@ -1553,7 +1553,7 @@ You display the `cUSDBalance` in the corresponding HTML element.
 
 Finally, you need to call your new functions when the page is loaded, adjust your event listener for that.
 
-```
+```js
 window.addEventListener('load', async () => {
   notification("⌛ Loading...")
   await connectCeloWallet()
@@ -1592,7 +1592,7 @@ When you compile your contract in Remix, Remix also creates the ABI in the form 
 
 Now that you have your ABI saved in your project you need to import it.
 
-```
+```js
 import Web3 from 'web3'
 import { newKitFromWeb3 } from '@celo/contractkit'
 import BigNumber from "bignumber.js"
@@ -1604,7 +1604,7 @@ You import this ABI for our marketplace contract and call it `marketplaceAbi`.
 
 After the deployment of your marketplace contract, you got the address of the contract, you need this address in order to find your contract and interact with it.
 
-```
+```js
 const ERC20_DECIMALS = 18
 const MPContractAddress = "0x178134c92EC973F34dD0dd762284b852B211CFC8"
 ```
@@ -1614,7 +1614,7 @@ This is the address of my contract, you replace it with your own.
 
 ![](https://cdn.kapwing.com/final_60a2392a7e73120137c9ade0_359354.gif)
 
-```
+```js
 let kit
 let contract
 let products = []
@@ -1624,7 +1624,7 @@ You also declare two new variables, `contract` and `products`, which is an empty
 
 When the user connects their celo wallet you will create an instance of the marketplace contract so you can interact with it.
 
-```
+```js
 const connectCeloWallet = async function () {
   if (window.celo) {
     try {
@@ -1652,7 +1652,7 @@ You assign your global `contract` variable a new `kit.web3.eth.Contract` object.
 
 Now that you have an instance of the contract that you can interact with, you can call its functions. First, you want to display the products.
 
-```
+```js
 const getProducts = async function() {
   const _productsLength = await contract.methods.getProductsLength().call()
   const _products = []
@@ -1664,7 +1664,7 @@ First, you need to know how many products are stored in the contract so you can 
 You create `_productsLength` to store the number of products and use `contract.methods` to call `getProductsLength()` from your contract and assign its value.
 
 Next, you declare an empty array for the product’s objects.
-```
+```js
   for (let i = 0; i < _productsLength; i++) {
     let _product = new Promise(async (resolve, reject) => {
       let p = await contract.methods.readProduct(i).call()
@@ -1693,7 +1693,7 @@ When all promises of this asynchronous operation are fulfilled you render your p
 
 Finally, you are going to enable the user to create a new product and save it to your contract.
 
-```
+```js
 document
   .querySelector("#newProductBtn")
   .addEventListener("click", async (e) => {
@@ -1715,7 +1715,7 @@ Again when somebody inputs a price value, you need to create a bigNumber and con
 
 You then show a notification that you are in the process of adding a new product.
 
-```
+```js
     try {
       const result = await contract.methods
         .writeProduct(...params)
@@ -1735,7 +1735,7 @@ If you get an error you display it to the user, if the product is added you disp
 
 You also need to change one line in your product template function.
 
-```
+```js
 function productTemplate(_product) {
   return `
     <div class="card mb-4">
@@ -1772,7 +1772,7 @@ Since you are dealing with BigNumbers you need to convert the price again.
 
 Now call your `getProducts` function when the DApp is loaded.
 
-```
+```js
 window.addEventListener('load', async () => {
   notification("⌛ Loading...")
   await connectCeloWallet()
@@ -1799,7 +1799,7 @@ In order to interact with the ERC-20 interface, we are going to need its ABI.
 Get the ABI from Remix and paste it into the erc20.abi.json file in your project.
 
 [GIF] // Showing how to copy the ABI from Remix to the project.
-```
+```js
 import Web3 from "web3"
 import { newKitFromWeb3 } from "@celo/contractkit"
 import BigNumber from "bignumber.js"
@@ -1813,7 +1813,7 @@ As you have seen you need the ABI and the address of a contract in order to inte
 
 We will provide you with the address of the cUSD contract on the alfajores testnet ([See cUSD on blockchain explorer](https://alfajores-blockscout.celo-testnet.org/address/0x874069fa1eb16d44d622f2e0ca25eea172369bc1/transactions)).
 
-```
+```js
 const ERC20_DECIMALS = 18
 const MPContractAddress = "0x178134c92EC973F34dD0dd762284b852B211CFC8"
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
@@ -1824,7 +1824,7 @@ You create a global variable for the cUSD contract address.
 
 Before you can make a transaction you first have to get the user's approval to make a transaction for a certain amount of token, the allowance.
 
-```
+```js
 async function approve(_price) {
   const cUSDContract = new kit.web3.eth.Contract(erc20Abi, cUSDContractAddress)
 
@@ -1846,7 +1846,7 @@ You return the result for error handling.
 
 For the final part of your DApp, you want to enable the user to buy a product. Adapt your buy button event listener for that.
 
-```
+```js
 document.querySelector("#marketplace").addEventListener("click", async (e) => {
   if (e.target.className.includes("buyBtn")) {
     const index = e.target.id
@@ -1858,7 +1858,7 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
     }
 ```
 When the user clicks on a buy button, you get the product id and show them a notification about what is happening. Next, you try to get the approval for the token amount that your contract wants to spend through the approval function that you just created.
-```
+```js
     notification(`⌛ Awaiting payment for "${products[index].name}"...`)
     try {
       const result = await contract.methods
@@ -1893,7 +1893,7 @@ In this very last part of the tutorial, we will show you how you can host your p
 
 After you tested your DApp and everything behaves like it's supposed to behave you can build your DApp in the command-line interface with the command.
 
-```
+```bash
 npm run build
 ```
 
